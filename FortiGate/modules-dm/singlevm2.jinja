@@ -214,7 +214,9 @@ resources:
     network: {{ nic.vpcLink }}
     priority: 100
     sourceRanges:
-    - 0.0.0.0/0
+    - 176.33.66.167/32
+    - 88.254.6.214/32
+    - 10.0.0.0/8
     allowed:
     - IPProtocol: all
 {% endfor %}
