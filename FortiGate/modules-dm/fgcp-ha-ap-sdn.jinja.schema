@@ -29,7 +29,7 @@ properties:
     type: object
     description: Licensing information. properties.type can be "byol" or "payg". For BYOL deployments include lics array pointing to the license files.
     default:
-      type: payg
+      type: byol
     properties:
       type:
         type: string
