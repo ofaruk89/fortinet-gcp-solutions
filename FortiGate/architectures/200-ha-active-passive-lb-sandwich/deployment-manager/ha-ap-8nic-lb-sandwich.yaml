@@ -9,7 +9,7 @@ resources:
 - name: Sample_Networks
   type: sample-vpcs.jinja
   properties:
-    region: eu-west1
+    region: europe-west1
     networks:
     - external
     - lan1
@@ -24,8 +24,8 @@ resources:
   type: fgcp-ha-ap-multilb.jinja
   properties:
     zones:
-    - eu-west1-b
-    - eu-west1-c
+    - europe-west1-b
+    - europe-west1-c
     instanceType: e2-standard-8
     license: #optional. default: payg
       type: byol
