@@ -23,7 +23,7 @@ resources:
   type: utils-sample-vpcs.jinja
   properties:
     prefix: demo
-    region: us-west1
+    region: eu-west1
     networks:
     - external
     - internal
@@ -59,8 +59,8 @@ resources:
   properties:
     prefix: demo # optional. defaults to deployment name
     zones:
-    - us-west1-b
-    - us-west1-c
+    - eu-west1-b
+    - eu-west1-c
     instanceType: e2-standard-4 #optional. defaults to e2-standard-4
     license: #optional. default: payg
       type: byol

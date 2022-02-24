@@ -9,14 +9,14 @@ resources:
 - name: Sample_Networks
   type: sample-vpcs.jinja
   properties:
-    region: us-west1
+    region: eu-west1
 
 - name: Fortigate_Cluster
   type: fgcp-ha-ap-multilb.jinja
   properties:
     zones:
-    - us-west1-b
-    - us-west1-b
+    - eu-west1-b
+    - eu-west1-b
     instanceType: e2-standard-4 #optional. defaults to e2-standard-4
     license: #optional. default: payg
       type: byol
