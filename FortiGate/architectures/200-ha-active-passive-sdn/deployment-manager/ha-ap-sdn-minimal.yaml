@@ -46,8 +46,8 @@ resources:
       external:
         vpc: $(ref.Sample_Networks.external-vpc)
         subnet: $(ref.Sample_Networks.external-sb)
-        ipCidrRange: 172.20.0.0/24
+        ipCidrRange: 10.150.0.0/24
       internal:
         vpc: $(ref.Sample_Networks.internal-vpc)
         subnet: $(ref.Sample_Networks.internal-sb)
-        ipCidrRange: 172.20.1.0/24
+        ipCidrRange: 10.150.1.0/24

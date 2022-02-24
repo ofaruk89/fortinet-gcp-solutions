@@ -33,7 +33,7 @@ properties:
         description: How many FortiGate sensors to deploy per region (can be overridden in policies definition)
       subnetBase:
         type: string
-        default: 172.20.0.0
+        default: 10.150.0.0
       fortiAnalyzer:
         type: object
         required:

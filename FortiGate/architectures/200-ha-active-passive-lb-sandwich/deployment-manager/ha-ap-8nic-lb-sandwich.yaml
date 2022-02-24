@@ -5,7 +5,7 @@ imports:
   name: sample-vpcs.jinja
 
 resources:
-# Create a sample set of VPC Networks with subnets
+# Create a sample set of VPC Networks with subnetsa
 - name: Sample_Networks
   type: sample-vpcs.jinja
   properties:
@@ -35,54 +35,54 @@ resources:
     - name: external
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
-      ipCidrRange: 172.20.0.0/24
+      ipCidrRange: 10.150.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
       routes: # this section triggers creation of ILB
-      - destRange: 172.20.1.0/24
+      - destRange: 10.150.1.0/24
         name: rt-to-internal
     - name: lan1
       vpcLink: $(ref.Sample_Networks.lan1-vpc)
       subnetLink: $(ref.Sample_Networks.lan1-sb)
-      ipCidrRange: 172.20.1.0/24
+      ipCidrRange: 10.150.1.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: hasync
       vpcLink: $(ref.Sample_Networks.hasync-vpc)
       subnetLink: $(ref.Sample_Networks.hasync-sb)
-      ipCidrRange: 172.20.2.0/24
+      ipCidrRange: 10.150.2.0/24
     - name: management
       vpcLink: $(ref.Sample_Networks.mgmt-vpc)
       subnetLink: $(ref.Sample_Networks.mgmt-sb)
-      ipCidrRange: 172.20.3.0/24
+      ipCidrRange: 10.150.3.0/24
       externalIP: # define externalIP to have public IPs bound directly to firewalls (e.g. for management)
         name: mgmt
     - name: lan2
       vpcLink: $(ref.Sample_Networks.lan2-vpc)
       subnetLink: $(ref.Sample_Networks.lan2-sb)
-      ipCidrRange: 172.20.4.0/24
+      ipCidrRange: 10.150.4.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: lan3
       vpcLink: $(ref.Sample_Networks.lan3-vpc)
       subnetLink: $(ref.Sample_Networks.lan3-sb)
-      ipCidrRange: 172.20.5.0/24
+      ipCidrRange: 10.150.5.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: lan4
       vpcLink: $(ref.Sample_Networks.lan4-vpc)
       subnetLink: $(ref.Sample_Networks.lan4-sb)
-      ipCidrRange: 172.20.6.0/24
+      ipCidrRange: 10.150.6.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: lan5
       vpcLink: $(ref.Sample_Networks.lan5-vpc)
       subnetLink: $(ref.Sample_Networks.lan5-sb)
-      ipCidrRange: 172.20.7.0/24
+      ipCidrRange: 10.150.7.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default

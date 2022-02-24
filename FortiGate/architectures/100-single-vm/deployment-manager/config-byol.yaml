@@ -28,13 +28,13 @@ resources:
     - name: ext
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
-      ipCidrRange: 172.20.0.0/24
+      ipCidrRange: 10.150.0.0/24
       externalIP:
         name: ext-ip
     - name: int
       vpcLink: $(ref.Sample_Networks.internal-vpc)
       subnetLink: $(ref.Sample_Networks.internal-sb)
-      ipCidrRange: 172.20.1.0/24
+      ipCidrRange: 10.150.1.0/24
 
 outputs:
 - name: singlevm2_template

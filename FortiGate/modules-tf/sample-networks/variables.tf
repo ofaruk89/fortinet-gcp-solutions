@@ -18,5 +18,5 @@ variable "networks" {
 variable "ip_cidr_2oct" {
   type = string
   description = "CIDR /16 range for created subnets"
-  default = "172.20"
+  default = "10.150"
 }

@@ -35,37 +35,37 @@ resources:
     - name: ext
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
-      ipCidrRange: 172.20.0.0/24
+      ipCidrRange: 10.150.0.0/24
       externalIP:
         name: ext-ip
     - name: lan1
       vpcLink: $(ref.Sample_Networks.lan1-vpc)
       subnetLink: $(ref.Sample_Networks.lan1-sb)
-      ipCidrRange: 172.20.1.0/24
+      ipCidrRange: 10.150.1.0/24
     - name: lan2
       vpcLink: $(ref.Sample_Networks.lan2-vpc)
       subnetLink: $(ref.Sample_Networks.lan2-sb)
-      ipCidrRange: 172.20.2.0/24
+      ipCidrRange: 10.150.2.0/24
     - name: lan3
       vpcLink: $(ref.Sample_Networks.lan3-vpc)
       subnetLink: $(ref.Sample_Networks.lan3-sb)
-      ipCidrRange: 172.20.3.0/24
+      ipCidrRange: 10.150.3.0/24
     - name: lan4
       vpcLink: $(ref.Sample_Networks.lan4-vpc)
       subnetLink: $(ref.Sample_Networks.lan4-sb)
-      ipCidrRange: 172.20.4.0/24
+      ipCidrRange: 10.150.4.0/24
     - name: lan5
       vpcLink: $(ref.Sample_Networks.lan5-vpc)
       subnetLink: $(ref.Sample_Networks.lan5-sb)
-      ipCidrRange: 172.20.5.0/24
+      ipCidrRange: 10.150.5.0/24
     - name: lan6
       vpcLink: $(ref.Sample_Networks.lan6-vpc)
       subnetLink: $(ref.Sample_Networks.lan6-sb)
-      ipCidrRange: 172.20.6.0/24
+      ipCidrRange: 10.150.6.0/24
     - name: lan7
       vpcLink: $(ref.Sample_Networks.lan7-vpc)
       subnetLink: $(ref.Sample_Networks.lan7-sb)
-      ipCidrRange: 172.20.7.0/24
+      ipCidrRange: 10.150.7.0/24
 
 outputs:
 - name: singlevm2_template

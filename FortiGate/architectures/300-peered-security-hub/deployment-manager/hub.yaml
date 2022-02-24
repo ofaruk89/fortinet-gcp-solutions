@@ -75,37 +75,37 @@ resources:
     - name: hub-external
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
-      ipCidrRange: 172.20.0.0/24
+      ipCidrRange: 10.150.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
       routes: # this section triggers creation of ILB
-      - destRange: 172.20.4.0/24
+      - destRange: 10.150.4.0/24
         name: to-spoke1
-      - destRange: 172.20.5.0/24
+      - destRange: 10.150.5.0/24
         name: to-spoke2
     - name: hub-internal
       vpcLink: $(ref.Sample_Networks.internal-vpc)
       subnetLink: $(ref.Sample_Networks.internal-sb)
-      ipCidrRange: 172.20.1.0/24
+      ipCidrRange: 10.150.1.0/24
       routes:
       - destRange: 0.0.0.0/0
     - name: hasync
       vpcLink: $(ref.Sample_Networks.hasync-vpc)
       subnetLink: $(ref.Sample_Networks.hasync-sb)
-      ipCidrRange: 172.20.2.0/24
+      ipCidrRange: 10.150.2.0/24
     - name: management
       vpcLink: $(ref.Sample_Networks.mgmt-vpc)
       subnetLink: $(ref.Sample_Networks.mgmt-sb)
-      ipCidrRange: 172.20.3.0/24
+      ipCidrRange: 10.150.3.0/24
       externalIP:
         name: mgmt
 # Add routes for spoke1 and spoke2 networks to FortiGates internal routing table
     fwConfig: |
       config router static
       edit 11
-      set dst 172.20.4.0/23
+      set dst 10.150.4.0/23
       set device port2
-      set gateway 172.20.1.1
+      set gateway 10.150.1.1
       next
       end
 

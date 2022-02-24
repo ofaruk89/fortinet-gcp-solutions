@@ -15,7 +15,7 @@ resources:
   properties:
     region: {{ properties.region }}
     network: $(ref.{{ prefix }}-{{ net }}-vpc.selfLink)
-    ipCidrRange: 172.20.{{ loop.index0 }}.0/24
+    ipCidrRange: 10.150.{{ loop.index0 }}.0/24
 {% endfor %}
 
 outputs:

@@ -39,7 +39,7 @@ resources:
     - name: external
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
-      ipCidrRange: 172.20.0.0/24
+      ipCidrRange: 10.150.0.0/24
       public: true
       serviceIPs:
       - name: app1
@@ -49,11 +49,11 @@ resources:
     - name: protected
       vpcLink: $(ref.Sample_Networks.internal-vpc)
       subnetLink: $(ref.Sample_Networks.internal-sb)
-      ipCidrRange: 172.20.1.0/24
+      ipCidrRange: 10.150.1.0/24
     - name: datasync
       vpcLink: $(ref.Sample_Networks.datasync-vpc)
       subnetLink: $(ref.Sample_Networks.datasync-sb)
-      ipCidrRange: 172.20.2.0/24
+      ipCidrRange: 10.150.2.0/24
 
 # To make our lives easier, let's pass public IP and default password from template outputs
 outputs:

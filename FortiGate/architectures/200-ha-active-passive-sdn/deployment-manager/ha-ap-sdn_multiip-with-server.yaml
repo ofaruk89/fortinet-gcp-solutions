@@ -52,19 +52,19 @@ resources:
       external:
         vpc: $(ref.Sample_Networks.external-vpc)
         subnet: $(ref.Sample_Networks.external-sb)
-        ipCidrRange: 172.20.0.0/24
+        ipCidrRange: 10.150.0.0/24
       internal:
         vpc: $(ref.Sample_Networks.internal-vpc)
         subnet: $(ref.Sample_Networks.internal-sb)
-        ipCidrRange: 172.20.1.0/24
+        ipCidrRange: 10.150.1.0/24
       hasync:
         vpc: $(ref.Sample_Networks.hasync-vpc)
         subnet: $(ref.Sample_Networks.hasync-sb)
-        ipCidrRange: 172.20.2.0/24
+        ipCidrRange: 10.150.2.0/24
       mgmt:
         vpc: $(ref.Sample_Networks.mgmt-vpc)
         subnet: $(ref.Sample_Networks.mgmt-sb)
-        ipCidrRange: 172.20.3.0/24
+        ipCidrRange: 10.150.3.0/24
     attachPublicIP: false #disables directly attached EIP
 # Let's add 2 EIPs using protocol forwarding. Template by default will forward TCP and UDP but
 # you can modify it and tell it to forward eg. only ICMP
@@ -79,7 +79,7 @@ resources:
       config firewall vip
         edit "demoserv-tcp80"
         set extintf "port1"
-        set mappedip "172.20.1.10"
+        set mappedip "10.150.1.10"
         set portforward enable
         set extport 80
         set mappedport 80
@@ -154,7 +154,7 @@ resources:
     networkInterfaces:
     - network: $(ref.Sample_Networks.internal-vpc)
       subnetwork: $(ref.Sample_Networks.internal-sb)
-      networkIP: 172.20.1.10
+      networkIP: 10.150.1.10
 
 
 # Note:
