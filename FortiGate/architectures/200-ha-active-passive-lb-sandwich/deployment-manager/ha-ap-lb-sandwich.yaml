@@ -24,7 +24,7 @@ resources:
     serialPortEnable: false
     networks: #define ALL the connected networks here. By convention the order is External, Internal, Heartbeat, Management, additional
     - name: external
-      vpcLink: $(ref.Sample_Networks.external-vpc)
+      vpcLink: default #$(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
       ipCidrRange: 10.150.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
