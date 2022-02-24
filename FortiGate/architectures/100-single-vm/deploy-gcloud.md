@@ -93,7 +93,7 @@ FGT_IMG_URL=$(gcloud compute images list --project fortigcp-project-001 --filter
 ZONE=europe-west1-c
 
 # create log disk
-gcloud compute disks create my-fgt-logdisk --size=100 --type=pd-ssd --zone=$ZONE
+gcloud compute disks create my-fgt-logdisk --size=10 --type=pd-ssd --zone=$ZONE
 
 # create static external IP
 gcloud compute addresses create my-fortigate-eip --region=europe-west1

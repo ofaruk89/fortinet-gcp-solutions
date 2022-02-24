@@ -10,7 +10,7 @@ resources:
   type: compute.v1.disk
   properties:
     zone: europe-west6-b
-    diskSizeGb: 30.0
+    diskSizeGb: 10.0
 - name: fgt-vm
   type: compute.v1.instance
   properties:
