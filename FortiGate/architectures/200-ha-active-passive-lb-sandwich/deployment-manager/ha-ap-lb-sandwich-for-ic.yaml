@@ -19,7 +19,7 @@ resources:
   properties:
     zones:
     - us-west1-b
-    - us-west1-c
+    - us-west1-b
     instanceType: e2-standard-4 #optional. defaults to e2-standard-4
     license: #optional. default: payg
       type: byol
