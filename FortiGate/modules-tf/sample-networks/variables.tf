@@ -12,7 +12,7 @@ variable "region" {
 variable "networks" {
   type        = list(string)
   description = "List of sample networks names"
-  default     = ["external", "internal", "hasync", "mgmt"]
+  default     = ["shbdn", "internal", "hasync", "mgmt"]
 }
 
 variable "ip_cidr_2oct" {
