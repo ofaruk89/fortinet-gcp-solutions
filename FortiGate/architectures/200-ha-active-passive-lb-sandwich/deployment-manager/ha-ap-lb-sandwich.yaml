@@ -25,25 +25,25 @@ resources:
     serialPortEnable: false
     networks: #define ALL the connected networks here. By convention the order is External, Internal, Heartbeat, Management, additional
     - name: external
-      vpcLink: $(ref.Sample_Networks.external-vpc)
-      subnetLink: $(ref.Sample_Networks.external-sb)
+      vpcLink: $(ref.Sample_Networks.external-vpx)
+      subnetLink: $(ref.Sample_Networks.external-sbx)
       ipCidrRange: 10.150.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
     - name: internal
-      vpcLink: $(ref.Sample_Networks.internal-vpc)
-      subnetLink: $(ref.Sample_Networks.internal-sb)
+      vpcLink: $(ref.Sample_Networks.internal-vpx)
+      subnetLink: $(ref.Sample_Networks.internal-sbx)
       ipCidrRange: 10.150.1.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: hasync
-      vpcLink: $(ref.Sample_Networks.hasync-vpc)
-      subnetLink: $(ref.Sample_Networks.hasync-sb)
+      vpcLink: $(ref.Sample_Networks.hasync-vpx)
+      subnetLink: $(ref.Sample_Networks.hasync-sbx)
       ipCidrRange: 10.150.2.0/24
     - name: management
-      vpcLink: $(ref.Sample_Networks.mgmt-vpc)
-      subnetLink: $(ref.Sample_Networks.mgmt-sb)
+      vpcLink: $(ref.Sample_Networks.mgmt-vpx)
+      subnetLink: $(ref.Sample_Networks.mgmt-sbx)
       ipCidrRange: 10.150.3.0/24
       externalIP: # define externalIP to have public IPs bound directly to firewalls (e.g. for management)
         name: mgmt
