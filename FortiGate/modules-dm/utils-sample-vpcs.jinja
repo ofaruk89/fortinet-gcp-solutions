@@ -6,15 +6,15 @@
 
 resources:
 {% for net in properties.networks %}
-- name: {{ prefix }}-{{ net }}-vpc
+- name: {{ prefix }}-{{ net }}-vpx
   type: compute.v1.network
   properties:
     autoCreateSubnetworks: false
-- name: {{ prefix }}-{{ net }}-sb
+- name: {{ prefix }}-{{ net }}-sbx
   type: compute.v1.subnetwork
   properties:
     region: {{ properties.region }}
-    network: $(ref.{{ prefix }}-{{ net }}-vpc.selfLink)
+    network: $(ref.{{ prefix }}-{{ net }}-vpx.selfLink)
     ipCidrRange: 10.150.{{ loop.index0 }}.0/24
 {% endfor %}
 
