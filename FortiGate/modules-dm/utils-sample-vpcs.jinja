@@ -20,8 +20,8 @@ resources:
 
 outputs:
 {% for net in properties.networks %}
-- name: {{ net }}-vpc
+- name: {{ net }}-vpx
   value: $(ref.{{ prefix }}-{{ net }}-vpx.selfLink)
-- name: {{ net }}-sb
+- name: {{ net }}-sbx
   value: $(ref.{{ prefix }}-{{ net }}-sbx.selfLink)
 {% endfor %}
