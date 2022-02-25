@@ -16,7 +16,7 @@ properties:
   networks:
     type: array
     default:
-    - external
+    - default
     - internal
     - hasync
     - mgmt

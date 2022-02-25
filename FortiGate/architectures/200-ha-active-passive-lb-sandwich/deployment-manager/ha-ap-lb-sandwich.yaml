@@ -21,9 +21,10 @@ resources:
     license: #optional. default: payg
       type: byol
     version: 6.4.8 #optional
+    logDiskSizeGb: 30.0
     serialPortEnable: false
     networks: #define ALL the connected networks here. By convention the order is External, Internal, Heartbeat, Management, additional
-    - name: external
+    - name: default
       vpcLink: $(ref.Sample_Networks.external-vpc)
       subnetLink: $(ref.Sample_Networks.external-sb)
       ipCidrRange: 10.150.0.0/24
