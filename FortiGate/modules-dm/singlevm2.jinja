@@ -245,4 +245,4 @@ outputs:
   value: $(ref.{{ prefix }}-{{ properties.networks[0].externalIP.name }}.address)
 {% endif %}
 - name: defaultPassword
-  value: {{ properties.adminPassword | default('11223344')}}
+  value: {{ properties.adminPassword | default('$(ref.'~prefix~'-'~fgname~'.id)')}}
