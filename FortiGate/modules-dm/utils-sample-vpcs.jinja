@@ -24,6 +24,6 @@ outputs:
 {% for net in properties.networks %}
 - name: {{ net }}
   value: $(ref.{{ net }}.selfLink)
-- name: {{ net }}-sub
-  value: $(ref.{{ net }}-sub.selfLink)
+- name: {{ prefix }}-{{ net }}-sub
+  value: $(ref.{{ prefix }}-{{ net }}-sub.selfLink)
 {% endfor %}
