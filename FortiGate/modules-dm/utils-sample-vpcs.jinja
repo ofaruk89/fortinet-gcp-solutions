@@ -25,5 +25,5 @@ outputs:
 - name: {{ net }}
   value: $(ref.{{ net }}.selfLink)
 - name: {{ prefix }}-{{ net }}-sub
-  value: $(ref.{{ prefix }}-{{ net }}-sub.selfLink)
+  value: $(ref.{{ net }}-sub.selfLink)
 {% endfor %}
