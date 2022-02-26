@@ -10,7 +10,7 @@ resources:
   type: compute.v1.network
   properties:
     autoCreateSubnetworks: false
-- name: {{ prefix }}-{{ net }}
+- name: {{ prefix }}-{{ net }}-sub
   type: compute.v1.subnetwork
   properties:
     region: {{ properties.region }}
@@ -25,5 +25,5 @@ outputs:
 - name: {{ net }}
   value: $(ref.{{ net }}.selfLink)
 - name: {{ net }}
-  value: $(ref.{{ net }}.selfLink)
+  value: $(ref.{{ net }}-sub.selfLink)
 {% endfor %}
