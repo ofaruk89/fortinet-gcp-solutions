@@ -271,16 +271,6 @@ resources:
     - $(ref.{{ prefix }}-fgt2.selfLink)
     sessionAffinity: NONE
 
-{# Cloud NAT needed for outbound connections to FortiGuard #}
-- name: {{ prefix }}-cloudnat-router
-  type: compute.v1.router
-  properties:
-    region: {{ region }}
-    network: {{ properties.networks[0].vpcLink }}
-    nats:
-    - name: {{ prefix }}-cloudnat
-      sourceSubnetworkIpRangesToNat: ALL_SUBNETWORKS_ALL_IP_RANGES
-      natIpAllocateOption: AUTO_ONLY
 
 outputs:
 - name: defaultPassword
