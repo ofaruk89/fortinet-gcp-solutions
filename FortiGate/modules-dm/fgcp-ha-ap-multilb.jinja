@@ -206,7 +206,7 @@ resources:
     allPorts: true
     backendService: $(ref.{{ prefix }}-{{ network.name | default( 'net'~loop.index )}}-lbbes.selfLink)
     network: {{ network.vpcLink }}
-    subnetwork: $(ref.{{ prefix }}-{{network.name}}.selfLink)
+    subnetwork: {{ network.subnetLink }}
 
 {% set netloop=loop %}
 {% for route in network.routes %}
