@@ -5,7 +5,7 @@ imports:
   name: sample-vpcs.jinja
 
 resources:
-# Create a sample set of VPC Networks with subnet
+# Create a samples set of VPC Networks with subnet
 - name: Sample_Networks
   type: sample-vpcs.jinja
   properties:
