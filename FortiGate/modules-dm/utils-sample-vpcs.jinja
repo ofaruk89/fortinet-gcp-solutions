@@ -18,10 +18,5 @@ resources:
     ipCidrRange: 10.150.{{ loop.index0 }}.0/24
 {% endfor %}
 
-outputs:
-{% for net in properties.networks %}
-- name: {{ net }}-vpx
-  value: $(ref.{{ prefix }}-{{ net }}-vpx.selfLink)
-- name: {{ net }}
-  value: $(ref.{{ prefix }}-{{ net }}.selfLink)
-{% endfor %}
+
+
