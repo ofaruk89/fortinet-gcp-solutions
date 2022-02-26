@@ -27,24 +27,24 @@ resources:
     - name: shbdn
       vpcLink: $(ref.Sample_Networks.shbdn)
       subnetLink: $(ref.Sample_Networks.shbdn-sub)
-      ipCidrRange: 10.150.0.0/24
+      ipCidrRange: 10.160.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
     - name: internal
       vpcLink: $(ref.Sample_Networks.internal)
       subnetLink: $(ref.Sample_Networks.internal-sub)
-      ipCidrRange: 10.150.1.0/24
+      ipCidrRange: 10.160.1.0/24
       routes:
       - destRange: 0.0.0.0/0
         name: default
     - name: hasync
       vpcLink: $(ref.Sample_Networks.hasync)
       subnetLink: $(ref.Sample_Networks.hasync-sub)
-      ipCidrRange: 10.150.2.0/24
+      ipCidrRange: 10.160.2.0/24
     - name: management
       vpcLink: $(ref.Sample_Networks.mgmt)
       subnetLink: $(ref.Sample_Networks.mgmt-sub)
-      ipCidrRange: 10.150.3.0/24
+      ipCidrRange: 10.160.3.0/24
       externalIP: # define externalIP to have public IPs bound directly to firewalls (e.g. for management)
         name: mgmt
 
