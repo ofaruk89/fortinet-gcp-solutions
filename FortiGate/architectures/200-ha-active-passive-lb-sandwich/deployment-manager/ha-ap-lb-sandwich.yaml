@@ -24,9 +24,9 @@ resources:
     logDiskSizeGb: 30.0
     serialPortEnable: false
     networks: #define ALL the connected networks here. By convention the order is External, Internal, Heartbeat, Management, additional
-    - name: external
-      vpcLink: $(ref.Sample_Networks.external-vpx)
-      subnetLink: $(ref.Sample_Networks.external)
+    - name: shbdn
+      vpcLink: $(ref.Sample_Networks.shbdn-vpx)
+      subnetLink: $(ref.Sample_Networks.shbdn)
       ipCidrRange: 10.150.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
