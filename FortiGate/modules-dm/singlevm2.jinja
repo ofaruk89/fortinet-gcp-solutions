@@ -62,7 +62,7 @@ resources:
   type: compute.v1.disk
   properties:
     zone: {{ zone }}
-    diskSizeGb: {{ properties.logDiskSizeGb }}
+    sizeGb: {{ properties.logDiskSizeGb }}
 {% endif %}
 - name: {{ prefix }}-{{ fgname }}
   type: compute.v1.instance
@@ -82,7 +82,7 @@ resources:
       - https://www.googleapis.com/compute/v1/projects/fortigcp-project-001/global/licenses/fortigate
       initializeParams:
         sourceImage: {{ firmwareImage }}
-        diskSizeGb: 10.0
+        sizeGb: 10.0
     {% if properties.logDiskSizeGb>0 %}
     - deviceName: {{ prefix }}-{{ fgname }}-logdisk
       source: $(ref.{{ prefix }}-{{ fgname }}-logdisk.selfLink)

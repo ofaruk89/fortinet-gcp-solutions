@@ -18,27 +18,38 @@ resources:
     ipCidrRange: 10.160.{{ loop.index0 }}.0/24
 {% endfor %}
 
-- name: {{ prefix }}-internal-to-shbdn
+- name: internal-to-shbdn
   action: gcp-types/compute-v1:compute.networks.addPeering
-  metadata:
-    runtimePolicy:
-    - CREATE
   properties:
-    network: $(ref.internal.selfLink)
-    name: {{ prefix }}-internal-to-shbdn
+    network: internal
+    name: internal-to-shbdn
+    importCustomRoutes: true
+    exportCustomRoutes: true
+    exchangeSubnetRoutes: true
     autoCreateRoutes: true
     peerNetwork: $(ref.shbdn.selfLink)
 
-- name: {{ prefix }}-shbdn-to-internal
+- name: shbdn-to-internal
   action: gcp-types/compute-v1:compute.networks.addPeering
-  metadata:
-    runtimePolicy:
-    - CREATE
   properties:
-    network: $(ref.internal.selfLink)
-    name: {{ prefix }}-shbdn-to-internal
+    network: shbdn
+    exportCustomRoutes: true
+    importCustomRoutes: true
+    exchangeSubnetRoutes: true
     autoCreateRoutes: true
-    peerNetwork: $(ref.shbdn.selfLink)
+    name: shbdn-to-internal
+    peerNetwork: $(ref.internal.selfLink)
+
+- name: fgt-egress-route
+  type: compute.v1.route
+  properties:
+    destRange: 0.0.0.0/0
+    priority: 800
+    network: $(ref.shbdn.selfLink)
+    nextHopIlb: $(ref.{{ prefix }}-internal-ilb.IPAddress )
+    description: goToInternetTaggedViaFGT
+    tags:
+    - via-fortigate
 
 
 
