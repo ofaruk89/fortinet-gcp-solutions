@@ -103,14 +103,14 @@ resources:
           {%- if "routes" in network %}
           edit 1
           set ip $(ref.{{ prefix }}-{{ network.name | default( 'net'~loop.index )}}-ilb.IPAddress) 255.255.255.255
-          set allowaccess probe-response
+          set allowaccess ping https ssh snmp http fgfm probe-response
           next
           {%- endif %}
           {%- if "serviceIPs" in network %}
             {%- for serviceIP in network.serviceIPs %}
           edit {{ loop.index+100 }}
           set ip $(ref.{{ prefix }}-{{ serviceIP.name }}.address) 255.255.255.255
-          set allowaccess ping https ssh snmp http fgfm probe-response
+          set allowaccess probe-response
           next
             {%- endfor %}
           {%- endif %}
@@ -150,6 +150,20 @@ resources:
       next
       {%- endif %}
       {%- endfor %}
+      end
+      config firewall policy
+        edit 0
+          set name "any2any"
+          set srcintf "port2"
+          set dstintf "port1"
+          set srcaddr "all"
+          set dstaddr "all"
+          set action accept
+          set schedule "always"
+          set service "ALL"
+          set logtraffic all
+          set nat enable
+        next
       end
       {{properties.fwConfig | indent(7)}}
 {% endfor%}
