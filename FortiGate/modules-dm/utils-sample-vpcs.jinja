@@ -28,24 +28,4 @@ outputs:
   value: $(ref.{{ prefix }}-{{ net }}-sub.selfLink)
 {% endfor %}
 
-- name: {{ prefix }}-internal-to-shbdn
-  action: gcp-types/compute-v1:compute.networks.addPeering
-  metadata:
-    runtimePolicy:
-    - CREATE
-  properties:
-    network: $(ref.internal.selfLink)
-    name: {{ prefix }}-internal-to-shbdn-desc
-    autoCreateRoutes: true
-    peerNetwork: $(ref.{{ properties["shbdn"] }}.selfLink)
 
-- name: {{ prefix }}-shbdn-to-internal
-  action: gcp-types/compute-v1:compute.networks.addPeering
-  metadata:
-    runtimePolicy:
-    - CREATE
-  properties:
-    network: $(ref.{{ properties["internal"] }}.name)
-    name: {{ prefix }}-shbdn-to-internal-desc
-    autoCreateRoutes: true
-    peerNetwork: $(ref.shbdn.selfLink)
