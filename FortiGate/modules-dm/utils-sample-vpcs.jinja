@@ -25,9 +25,9 @@ resources:
     - CREATE
   properties:
     network: $(ref.internal.selfLink)
-    name: {{ prefix }}-internal-to-shbdn-desc
+    name: {{ prefix }}-internal-to-shbdn
     autoCreateRoutes: true
-    peerNetwork: $(ref.{{ properties["shbdn"] }}.selfLink)
+    peerNetwork: $(ref.shbdn.selfLink)
 
 - name: {{ prefix }}-shbdn-to-internal
   action: gcp-types/compute-v1:compute.networks.addPeering
@@ -35,8 +35,8 @@ resources:
     runtimePolicy:
     - CREATE
   properties:
-    network: $(ref.{{ properties["internal"] }}.name)
-    name: {{ prefix }}-shbdn-to-internal-desc
+    network: $(ref.internal.selfLink)
+    name: {{ prefix }}-shbdn-to-internal
     autoCreateRoutes: true
     peerNetwork: $(ref.shbdn.selfLink)
 
