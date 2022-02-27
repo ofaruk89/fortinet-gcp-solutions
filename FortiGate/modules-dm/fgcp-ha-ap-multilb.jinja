@@ -300,6 +300,17 @@ resources:
     - $(ref.{{ prefix }}-fgt2.selfLink)
     sessionAffinity: NONE
 
+- name: fgt-egress-route
+  type: compute.v1.route
+  properties:
+    destRange: 0.0.0.0/0
+    priority: 800
+    network: $(ref.shbdn.selfLink)
+    nextHopIlb: $(ref.{{ prefix }}-internal-ilb.IPAddress )
+    description: goToInternetTaggedViaFGT
+    tags:
+    - via-fortigate
+
 
 outputs:
 - name: defaultPassword
