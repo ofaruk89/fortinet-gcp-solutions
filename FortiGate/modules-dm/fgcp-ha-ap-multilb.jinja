@@ -310,6 +310,9 @@ resources:
     description: goToInternetTaggedViaFGT
     tags:
     - via-fortigate
+  metadata:
+    dependsOn:
+    - {{ prefix }}-internal-rt-default-via-fgt 
 
 
 outputs:
