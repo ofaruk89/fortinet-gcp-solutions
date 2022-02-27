@@ -18,16 +18,6 @@ resources:
     ipCidrRange: 10.160.{{ loop.index0 }}.0/24
 {% endfor %}
 
-
-
-outputs:
-{% for net in properties.networks %}
-- name: {{ net }}
-  value: $(ref.{{ net }}.selfLink)
-- name: {{ net }}-sub
-  value: $(ref.{{ prefix }}-{{ net }}-sub.selfLink)
-{% endfor %}
-
 - name: {{ prefix }}-internal-to-shbdn
   action: gcp-types/compute-v1:compute.networks.addPeering
   metadata:
@@ -49,3 +39,15 @@ outputs:
     name: {{ prefix }}-shbdn-to-internal-desc
     autoCreateRoutes: true
     peerNetwork: $(ref.shbdn.selfLink)
+
+
+
+outputs:
+{% for net in properties.networks %}
+- name: {{ net }}
+  value: $(ref.{{ net }}.selfLink)
+- name: {{ net }}-sub
+  value: $(ref.{{ prefix }}-{{ net }}-sub.selfLink)
+{% endfor %}
+
+
