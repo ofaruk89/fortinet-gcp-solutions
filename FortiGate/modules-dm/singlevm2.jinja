@@ -57,12 +57,12 @@ resources:
   {% endfor %} {# for each additional external IP #}
 {% endfor %} {# for each nic #}
 
-{% if properties.logDiskSizeGb>0 %}
+{% if properties.sizeGb>0 %}
 - name: {{ prefix }}-{{ fgname }}-logdisk
   type: compute.v1.disk
   properties:
     zone: {{ zone }}
-    sizeGb: {{ properties.logDiskSizeGb }}
+    sizeGb: {{ properties.sizeGb }}
 {% endif %}
 - name: {{ prefix }}-{{ fgname }}
   type: compute.v1.instance
@@ -82,8 +82,8 @@ resources:
       - https://www.googleapis.com/compute/v1/projects/fortigcp-project-001/global/licenses/fortigate
       initializeParams:
         sourceImage: {{ firmwareImage }}
-        sizeGb: 10.0
-    {% if properties.logDiskSizeGb>0 %}
+        diskSizeGb: 15.0
+    {% if properties.sizeGb>0 %}
     - deviceName: {{ prefix }}-{{ fgname }}-logdisk
       source: $(ref.{{ prefix }}-{{ fgname }}-logdisk.selfLink)
       type: PERSISTENT
