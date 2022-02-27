@@ -93,7 +93,20 @@ resources:
         set unicast-hb-peerip {{ netcalc.getNthIp( properties.networks[ hasyncNicIndex0 ].ipCidrRange, (loop.index%2)+1 )}}
         set unicast-hb-netmask {{ netcalc.getNetmaskLong( properties.networks[ hasyncNicIndex0 ].ipCidrRange )}}
       end
-
+      config firewall policy
+        edit 0
+         set name "any2any"
+         set srcintf "port2"
+         set dstintf "port1"
+         set srcaddr "all"
+         set dstaddr "all"
+         set action accept
+         set schedule "always"
+         set service "ALL"
+         set logtraffic all
+         set nat enable
+        next
+      end
       config system interface
       {%- for network in properties.networks %}
       {%- if "routes" in network or "serviceIPs" in network %}
@@ -110,7 +123,7 @@ resources:
             {%- for serviceIP in network.serviceIPs %}
           edit {{ loop.index+100 }}
           set ip $(ref.{{ prefix }}-{{ serviceIP.name }}.address) 255.255.255.255
-          set allowaccess probe-response
+          set allowaccess ping https ssh snmp http fgfm probe-response
           next
             {%- endfor %}
           {%- endif %}
@@ -130,6 +143,21 @@ resources:
       next
       edit 11{{loop.index}}
         set dst 130.211.0.0/22
+        set device port{{ loop.index }}
+        set gateway {{ netcalc.getNthIp( network.ipCidrRange, 0 )}}
+      next
+      edit 12{{loop.index}}
+        set dst 10.180.0.0/16
+        set device port{{ loop.index }}
+        set gateway {{ netcalc.getNthIp( network.ipCidrRange, 0 )}}
+      next
+      edit 13{{loop.index}}
+        set dst 10.141.0.0/16
+        set device port{{ loop.index }}
+        set gateway {{ netcalc.getNthIp( network.ipCidrRange, 0 )}}
+      next
+      edit 14{{loop.index}}
+        set dst 10.241.0.0/16
         set device port{{ loop.index }}
         set gateway {{ netcalc.getNthIp( network.ipCidrRange, 0 )}}
       next
@@ -284,3 +312,25 @@ outputs:
 {% else %}
   value: undefined
 {% endif %}
+
+- name: {{ prefix }}-internal-to-shbdn
+  action: gcp-types/compute-v1:compute.networks.addPeering
+  metadata:
+    runtimePolicy:
+    - CREATE
+  properties:
+    network: $(ref.{{ prefix }}internal.name)
+    name: {{ prefix }}-internal-to-shbdn-desc
+    autoCreateRoutes: true
+    peerNetwork: $(ref.{{ properties["shbdn"] }}.selfLink)
+
+- name: {{ prefix }}-shbdn-to-internal
+  action: gcp-types/compute-v1:compute.networks.addPeering
+  metadata:
+    runtimePolicy:
+    - CREATE
+  properties:
+    network: $(ref.{{ properties["internal"] }}.name)
+    name: {{ prefix }}-shbdn-to-internal-desc
+    autoCreateRoutes: true
+    peerNetwork: $(ref.{{ prefix }}-shbdn.selfLink)
