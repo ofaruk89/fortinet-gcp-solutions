@@ -200,6 +200,7 @@ resources:
           end
           {%- endfor %}
           {%- endfor %}
+          {#
           config firewall policy
             edit 0
               set name "any2any"
@@ -214,6 +215,7 @@ resources:
               set nat enable
             next
           end
+          #}
           {{ properties.fwConfig | indent(10) }}
     tags:
       items:
