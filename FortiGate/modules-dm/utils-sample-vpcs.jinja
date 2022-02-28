@@ -13,7 +13,7 @@ resources:
   {% if "shbdn" in net %}
   metadata:
     runtimePolicy:
-    - CREATE
+    - ABANDON
   {% endif %}
 - name: {{ prefix }}-{{ net }}-sub
   type: compute.v1.subnetwork
