@@ -10,6 +10,11 @@ resources:
   type: compute.v1.network
   properties:
     autoCreateSubnetworks: false
+  {% if "shbdn" in net %}
+  metadata:
+    runtimePolicy:
+    - CREATE
+  {% end if %}
 - name: {{ prefix }}-{{ net }}-sub
   type: compute.v1.subnetwork
   properties:

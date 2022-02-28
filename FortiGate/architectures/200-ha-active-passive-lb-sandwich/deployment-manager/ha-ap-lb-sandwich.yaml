@@ -30,9 +30,6 @@ resources:
       ipCidrRange: 10.160.0.0/24
       serviceIPs: # this section triggers creation of ELB and EIP
       - name: app1
-      metadata:
-        runtimePolicy:
-        - CREATE
       
     - name: internal
       vpcLink: $(ref.Sample_Networks.internal)
