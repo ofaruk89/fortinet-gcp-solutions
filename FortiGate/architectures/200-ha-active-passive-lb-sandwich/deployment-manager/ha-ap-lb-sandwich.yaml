@@ -46,8 +46,8 @@ resources:
       vpcLink: $(ref.Sample_Networks.mgmt)
       subnetLink: $(ref.Sample_Networks.mgmt-sub)
       ipCidrRange: 10.160.3.0/24
-      #externalIP: # define externalIP to have public IPs bound directly to firewalls (e.g. for management)
-      #  name: mgmt
+      externalIP: # define externalIP to have public IPs bound directly to firewalls (e.g. for management)
+        name: mgmt
 
 outputs:
 - name: Temporary Admin Password
