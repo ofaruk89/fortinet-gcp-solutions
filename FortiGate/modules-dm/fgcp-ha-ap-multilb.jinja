@@ -300,6 +300,7 @@ resources:
     - $(ref.{{ prefix }}-fgt2.selfLink)
     sessionAffinity: NONE
 
+{#
 - name: fgt-egress-route
   type: compute.v1.route
   properties:
@@ -314,7 +315,7 @@ resources:
     dependsOn:
     - {{ prefix }}-internal-rt-default-via-fgt
     - {{ prefix }}-fgt2
-
+#}
 
 outputs:
 - name: defaultPassword
