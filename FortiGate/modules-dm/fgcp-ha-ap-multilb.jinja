@@ -312,7 +312,8 @@ resources:
     - via-fortigate
   metadata:
     dependsOn:
-    - {{ prefix }}-internal-rt-default-via-fgt 
+    - {{ prefix }}-internal-rt-default-via-fgt
+    - {{ prefix }}-fgt2
 
 
 outputs:
