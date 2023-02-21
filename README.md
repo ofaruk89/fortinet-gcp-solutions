@@ -1,5 +1,11 @@
 # Fortinet Google Cloud templates
 
+# TAG BASE ROUTE
+gcloud compute routes create fortigate-route --destination-range 0.0.0.0/0 --priority=20 --next-hop-ilb=10.180.101.5 
+--tags=via-fortigate --network=shbdn
+
+--next-hop-ilb de lb ip verilmelidir. isim değil
+
 Thank you for visiting Fortinet Google Cloud templates repository. This repository provides:
 - information about reference architectures
 - ready to use Terraform modules
